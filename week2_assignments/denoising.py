@@ -29,7 +29,7 @@ def denoising():
     ip = utils.ImageProcessing(args)
     
     # load a image
-    image = ip.get_one_image()
+    image = ip.get_one_image() # 232x230x3
     #cv2.imshow('original', image)
 
     est_stds = []
@@ -68,3 +68,7 @@ def denoising():
     
 if __name__ == '__main__':
     denoising()
+    # args = get_arguments()
+    # ip = utils.ImageProcessing(args)
+    # image = ip.get_one_image()
+    # print(np.shape(image))

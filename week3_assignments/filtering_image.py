@@ -14,24 +14,21 @@ def get_arguments():
     
     return parser.parse_args()
 
-def get_histogram(img):
-    return np.bincount(img) / len(img)
-
-def hist_equal():
-    """ week2 assignment 2: histogram equalization """
+def gauss_conv():
+    """ week3 assignment 1: gaussian filter convolution"""
     
     args = get_arguments()
     ip = utils.ImageProcessing(args)
     
     # load a image
-    image = ip.get_one_image() # (232, 230, 3)
+    image = ip.get_one_image()
 
     # get intensity
-    img_cvt = ip.cvtYCrCb(image) # (232, 230, 3)
-    old_intensity = img_cvt[:, :, 0] # (232, 230)
+    img_cvt = ip.cvtYCrCb(image)
+    old_intensity = img_cvt[:, :, 0]
     cv2.imshow('original_intensity', old_intensity)
 
-    intensity = np.concatenate(old_intensity, axis=0) # (53360,)
+    intensity = np.concatenate(old_intensity, axis=0)
     # get histogram of the old image
     hist_old = get_histogram(intensity)
     # create transform function vector
