@@ -21,14 +21,14 @@ def gauss_conv():
     ip = utils.ImageProcessing(args)
     
     # load a image
-    image = ip.get_one_image()
+    image = ip.get_one_image() # (232, 230, 3)
 
     # get intensity
-    img_cvt = ip.cvtYCrCb(image)
-    old_intensity = img_cvt[:, :, 0]
+    img_cvt = ip.cvtYCrCb(image) # (232, 230, 3)
+    old_intensity = img_cvt[:, :, 0] # (232, 230)
     cv2.imshow('original_intensity', old_intensity)
 
-    intensity = np.concatenate(old_intensity, axis=0)
+    intensity = np.concatenate(old_intensity, axis=0) # (53360,)
     # get histogram of the old image
     hist_old = get_histogram(intensity)
     # create transform function vector
